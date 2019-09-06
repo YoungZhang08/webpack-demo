@@ -1,7 +1,11 @@
 {
   "presets": [
     [
-      "env",
+      "react",
+      "es2015",
+      "stage-0",
+      "@babel/preset-env",
+      "@babel/preset-react",
       {
         "targets": {
           "browsers": [
@@ -11,8 +15,6 @@
           ]
         }
       }
-    ],
-    "react",
-		"es2015",
+    ]
   ]
 }
