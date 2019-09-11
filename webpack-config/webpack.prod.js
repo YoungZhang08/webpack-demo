@@ -16,8 +16,8 @@ config
 config
   .plugin('minicss')
     .use(MiniCssExtractPlugin, [{
-      filename: '[name].[contenthash].css',
-      chunkFilename: '[id].[contenthash].css',
+      filename: '[name].[hash].css',
+      chunkFilename: '[id].[hash].css',
     }])
 
 config

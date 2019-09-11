@@ -2,7 +2,7 @@ const Config = require('webpack-chain'); // 导入 webpack-chain 模块
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const config = new Config();
-const devMode = "production" !== process.env.NODE_ENV; // 模式（开发 ？ 运行）
+const devMode = "production" !== process.env.NODE_ENV; // 模式（开发 ？ 生产）
 
 config
   // 修改 entry 配置
@@ -10,8 +10,8 @@ config
     .add('./src/index.tsx')
     .end()
   .output
-    .path('./dist')
-    .filename('[name].[chunkhash].js')
+    .path('/dist')
+    .filename('[name].[hash].js')
 
 /** js */
 config.module
