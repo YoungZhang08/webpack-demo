@@ -1,5 +1,6 @@
 const Config = require('webpack-chain'); // 导入 webpack-chain 模块
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const path = require('path');
 
 const config = new Config();
 const devMode = "production" !== process.env.NODE_ENV; // 模式（开发 ？ 生产）
@@ -10,7 +11,7 @@ config
     .add('./src/index.tsx')
     .end()
   .output
-    .path('/dist')
+    .path(path.resolve(__dirname, '../dist'))
     .filename('[name].[hash].js')
 
 /** js */
@@ -22,6 +23,7 @@ config.module
       .end()
     .use('happypack')
       .loader('babel-loader')
+      .end()
 
 /** css */
 config.module
@@ -35,6 +37,7 @@ config.module
       .end()
     .use('less')
       .loader('less-loader')
+      .end()
 
 /** plugin */
 config
