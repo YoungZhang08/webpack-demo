@@ -2,6 +2,7 @@ const webpack = require('webpack');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const SpeedMeasurePlugin = require("speed-measure-webpack-plugin");
+const TerserJSPlugin = require("terser-webpack-plugin");
 
 const config = require('./webpack.common');
 const smp = new SpeedMeasurePlugin({
@@ -12,6 +13,12 @@ config
   .mode("production")
   .devtool("source-map")
 
+config
+  .plugin('terser')
+    .use(TerserJSPlugin, [{
+      cache: true,
+      parallel: true
+    }]);
 
 config
   .plugin('minicss')

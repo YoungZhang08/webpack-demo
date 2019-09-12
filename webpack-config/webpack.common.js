@@ -39,6 +39,19 @@ config.module
       .loader('less-loader')
       .end()
 
+/** 图片 */
+config.module
+  .rule('image')
+    .test(/\.(png|jpg|gif|svg|webp)/)
+    .exclude
+      .add(/node_modules/)
+      .end()
+    .use('url')
+      .loader('url-loader')
+      .options({
+        limit: 8192
+      })
+      
 /** plugin */
 config
   .plugin('html')
