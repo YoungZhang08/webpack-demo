@@ -1,18 +1,19 @@
 const Config = require('webpack-chain'); // 导入 webpack-chain 模块
-const HtmlWebpackPlugin = require('html-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin'); // html 插件
+const CleanWebpackPlugin = require('clean-webpack-plugin'); // 构建前删除原有的打包文件
 const path = require('path');
 
-const config = new Config();
-const devMode = "production" !== process.env.NODE_ENV; // 模式（开发 ？ 生产）
+const config = new Config(); // 实例化一个 webpack-chain
+const devMode = "production" !== process.env.NODE_ENV; // 模式（开发 == true，生产 == false）
 
 config
-  // 修改 entry 配置
+  // 配置 entry
   .entry('index')
-    .add('./src/index.tsx')
+    .add('./src/index.tsx') // 入口路径
     .end()
   .output
     .path(path.resolve(__dirname, '../dist'))
-    .filename('[name].[hash].js')
+    .filename('[name].[hash].js') // 使用 hash 方式防止打包后的文件名重名
 
 /** js */
 config.module
@@ -53,6 +54,10 @@ config.module
       })
       
 /** plugin */
+// config
+//   .plugin('clean')
+//     .use(CleanWebpackPlugin, [path.resolve(__dirname, '../dist')])
+
 config
   .plugin('html')
     .use(HtmlWebpackPlugin, [{
