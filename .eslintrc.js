@@ -25,12 +25,6 @@ module.exports = {
       pragma: 'React',
       version: 'detect',
     },
-    // 解决webpack alias 找不到模块 问题
-    'import/resolver': {
-      alias: {
-        map: [['Images', './src/assets/images/']],
-      },
-    },
   },
   // 这里填入你的项目需要的个性化配置，比如：
   rules: {
@@ -64,7 +58,6 @@ module.exports = {
         prop: 'parens-new-line',
       },
     ], // 多行的 jsx 必须有括号包起来
-    '@typescript-eslint/explicit-function-return-type': 2, // 要求函数和类方法的显式返回类型
     '@typescript-eslint/interface-name-prefix': [1, 'always'], // 要求接口名称以 I 为前缀
     '@typescript-eslint/no-use-before-define': [
       2,
